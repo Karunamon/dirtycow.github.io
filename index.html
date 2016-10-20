@@ -51,7 +51,7 @@
           <p>"<em>A race condition was found in the way the Linux kernel's memory subsystem handled the copy-on-write (COW) breakage of private read-only memory mappings. An unprivileged local user could use this flaw to gain write access to otherwise read-only memory mappings and thus increase their privileges on the system.</em>" (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1384344#">RH</a>)</p>
 
           <h4>What makes the Dirty COW bug unique?</h4>
-          <p>In fact, all the boring normal bugs are _way_ more important, just because there's a lot more of them. I don't think some spectacular security hole should be glorified or cared about as being any more "special" than a random spectacular crash due to bad locking.</p>
+          <p>It's being exploited <i>right now</i>. While this bug doesn't allow someone to pwn your machine all by itself, combined with a remote code execution exploit, it would allow an attacker to gain root on your machine.</p>
           
           <h4>Anyone sharing or have details about the "<a href="https://twitter.com/timstrazz/status/788966208754241536">in the wild exploit</a>"?</h4>
           <p>An exploit using this technique has been found in the wild from an HTTP packet capture according to <a href="http://www.v3.co.uk/v3-uk/news/2474845/linux-users-urged-to-protect-against-dirty-cow-security-flaw">Phil Oester</a>.</p>
@@ -62,7 +62,7 @@
           <p>This FAQ provides answers to some of the most frequently asked questions regarding the Dirty COW vulnerability. This is a living document and will be updated regularly at <a href="https://dirtycow.ninja">https://dirtycow.ninja</a>.</p>
           
           <h4>Am I affected by the bug?</h4>
-          <p><script>document.write(navigator.userAgent.match(/Linux|Android/)?'Yes':'Nope')</script>.</p>
+          <p>If you're running Linux, probably. The bug has been around for nearly a decade.</p>
 
           <h4>Can my antivirus detect or block this attack?</h4>
           <p>Although the attack can happen in different layers, antivirus signatures that detect Dirty COW could be developed. Due to the attack complexity, differentiating between legitimate use and attack cannot be done easily, but the attack may be detected by comparing the size of the binary against the size of the original binary. This implies that antivirus can be programmed to detect the attack but not to block it unless binaries are blocked altogether.</p>
